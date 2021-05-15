@@ -1,13 +1,14 @@
+#include <avr/interrupt.h>
 unsigned long _avr_timer_M =1;
 unsigned long _avr_timer_cntcurr = 0;
 volatile unsigned char TimerFlag = 0;
 void TimerOn(){
-TCCR1B = 0x0B;
-OCR1A = 125;
-TIMSK1 = 0x02;
-TCNT1=0;
-_avr_timer_cntcurr = _avr_timer_M;
-SREG |= 0x80;
+	TCCR1B = 0x0B;
+	OCR1A = 125;
+	TIMSK1 = 0x02;
+	TCNT1=0;
+	_avr_timer_cntcurr = _avr_timer_M;
+	SREG |= 0x80;
 }
 
 void TimerOff(){
@@ -16,7 +17,7 @@ void TimerISR(){
 	TimerFlag = 1;
 }
 
-void ISR(TIMER1_COMPA_vect){
+ISR(TIMER1_COMPA_vect){
 	_avr_timer_cntcurr--;
 	if(_avr_timer_cntcurr ==0){
 		TimerISR();

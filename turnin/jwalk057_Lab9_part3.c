@@ -7,7 +7,7 @@
  *	I acknowledge all content contained herein, excluding template or example
  *	code, is my own original work.
  *
- *	Demo link:
+ *	Demo link: https://youtu.be/tcO8rLjUDeo
  */
 #include <avr/io.h>
 #include "timer.h"
